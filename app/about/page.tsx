@@ -35,7 +35,7 @@ export default function AboutPage() {
           <ul className="mt-4 grid gap-3 text-sm text-muted sm:grid-cols-2">
             {siteConfig.services.map((service) => (
               <li key={service}>
-                <Badge className="w-full justify-center px-3 py-2">{service}</Badge>
+                <Badge badgeStyle="list">{service}</Badge>
               </li>
             ))}
           </ul>

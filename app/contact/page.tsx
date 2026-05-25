@@ -36,14 +36,23 @@ export default function ContactPage() {
           <ul className="space-y-3 text-sm text-muted">
             {siteConfig.contactChecklist.map((item) => (
               <li key={item}>
-                <Badge className="w-full justify-start rounded-xl px-3 py-2">{item}</Badge>
+                <Badge badgeStyle="list">{item}</Badge>
               </li>
             ))}
           </ul>
           <form className="space-y-3" aria-label="Contact form preview">
-            <Input type="text" placeholder="Your name" aria-label="Your name" />
-            <Input type="email" placeholder="Email address" aria-label="Email address" />
-            <Textarea placeholder="Project details" aria-label="Project details" />
+            <label className="block space-y-2 text-sm font-medium">
+              <span>Your name</span>
+              <Input type="text" placeholder="Your name" aria-label="Your name" />
+            </label>
+            <label className="block space-y-2 text-sm font-medium">
+              <span>Email address</span>
+              <Input type="email" placeholder="Email address" aria-label="Email address" />
+            </label>
+            <label className="block space-y-2 text-sm font-medium">
+              <span>Project details</span>
+              <Textarea placeholder="Project details" aria-label="Project details" />
+            </label>
           </form>
           <Button href="/projects" variant="outline">
             View case studies
