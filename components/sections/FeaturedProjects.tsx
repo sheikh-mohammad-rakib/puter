@@ -1,6 +1,9 @@
+import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { projects } from "@/data/projects";
+import { typographyScale } from "@/lib/design-system";
 
 export function FeaturedProjects() {
   const featured = projects.slice(0, 3);
@@ -13,7 +16,7 @@ export function FeaturedProjects() {
             <p className="text-xs uppercase tracking-[0.3em] text-muted">
               Selected work
             </p>
-            <h2 className="text-3xl font-semibold sm:text-4xl">Recent projects</h2>
+            <h2 className={typographyScale.displayLg}>Recent projects</h2>
           </div>
           <Button href="/projects" variant="ghost" size="sm">
             View all
@@ -21,10 +24,7 @@ export function FeaturedProjects() {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {featured.map((project) => (
-            <article
-              key={project.title}
-              className="rounded-2xl border border-border bg-surface p-6 shadow-sm"
-            >
+            <Card key={project.title} variant="interactive" className="p-6">
               <p className="text-xs uppercase tracking-[0.2em] text-muted">
                 {project.year}
               </p>
@@ -32,15 +32,10 @@ export function FeaturedProjects() {
               <p className="mt-2 text-sm text-muted">{project.summary}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-border px-3 py-1 text-xs text-muted"
-                  >
-                    {tag}
-                  </span>
+                  <Badge key={tag}>{tag}</Badge>
                 ))}
               </div>
-            </article>
+            </Card>
           ))}
         </div>
       </Container>

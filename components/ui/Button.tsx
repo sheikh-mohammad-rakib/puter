@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/cn";
 
-type ButtonVariants = "primary" | "outline" | "ghost";
+type ButtonVariants = "primary" | "secondary" | "outline" | "ghost";
 
 type ButtonSizes = "sm" | "md" | "lg";
 
@@ -13,12 +13,15 @@ type ButtonProps = Omit<ComponentPropsWithoutRef<typeof Link>, "className"> & {
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "inline-flex items-center justify-center gap-2 rounded-xl text-sm font-medium shadow-soft transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:translate-y-0";
 
 const variantStyles: Record<ButtonVariants, string> = {
-  primary: "bg-foreground text-background hover:bg-foreground/90",
-  outline: "border border-border bg-surface text-foreground hover:bg-foreground/5",
-  ghost: "text-foreground hover:bg-foreground/5",
+  primary: "bg-accent text-white hover:-translate-y-0.5 hover:bg-accent-strong",
+  secondary:
+    "border border-border bg-surface-elevated text-foreground hover:-translate-y-0.5 hover:bg-surface",
+  outline:
+    "border border-border bg-surface text-foreground hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accent/10",
+  ghost: "text-foreground shadow-none hover:bg-foreground/5",
 };
 
 const sizeStyles: Record<ButtonSizes, string> = {
