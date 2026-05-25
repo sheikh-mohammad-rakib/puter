@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/data/site";
+import { typographyScale } from "@/lib/design-system";
 
 export function AboutPreview() {
   return (
     <section className="py-16 sm:py-24">
       <Container className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted">About</p>
-          <h2 className="text-3xl font-semibold sm:text-4xl">
+          <p className={`${typographyScale.label} text-muted`}>About</p>
+          <h2 className={typographyScale.displayLg}>
             Designing calm, clear product journeys.
           </h2>
           <p className="text-muted">{siteConfig.about}</p>
@@ -18,13 +20,10 @@ export function AboutPreview() {
         </div>
         <div className="space-y-4">
           {siteConfig.highlights.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-border bg-surface p-5"
-            >
+            <Card key={item.title} variant="elevated" className="space-y-2 p-5">
               <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm text-muted">{item.description}</p>
-            </div>
+              <p className="text-sm text-muted">{item.description}</p>
+            </Card>
           ))}
         </div>
       </Container>
